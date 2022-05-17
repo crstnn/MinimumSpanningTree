@@ -1,3 +1,4 @@
+#!/usr/bin/python3.10
 class IntSet:
     def __init__(self, max_value: int):
         self.is_present = [False] * max_value

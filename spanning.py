@@ -1,3 +1,4 @@
+#!/usr/bin/python3.10
 import sys
 from mst import Graph, Edge, GraphInformation
 

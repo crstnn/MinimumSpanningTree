@@ -1,3 +1,4 @@
+#!/usr/bin/python3.10
 import math
 from collections import namedtuple
 from int_set import IntSet

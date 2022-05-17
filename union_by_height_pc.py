@@ -1,3 +1,4 @@
+#!/usr/bin/python3.10
 class DisjointSet:
     """Union by height with path compression"""
 

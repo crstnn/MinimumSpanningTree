@@ -123,10 +123,12 @@ class Graph:
 
         adjacent_vertices_table = Graph._get_adjacent_vertices_lookup_table(self.mst_edges, self.number_of_vertices)
 
+        visited_vert_set = IntSet(self.number_of_vertices + 1)
+
+        # arbitrarily chosen first vertex as root of tree
+        currently_processing = [1]
         vertex_infos = [None, VertexInformation(1, None, None, 0)] + ([None] * (self.number_of_vertices - 1))
 
-        visited_vert_set = IntSet(self.number_of_vertices + 1)
-        currently_processing = [1]  # arbitrarily chosen first vertex as root of tree
         depth = 0
         # BFS of MST from root to leaves
         while currently_processing:

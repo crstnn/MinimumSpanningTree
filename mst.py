@@ -1,8 +1,8 @@
 #!/usr/bin/python3.10
 import math
 from collections import namedtuple
-from int_set import IntSet
-from union_by_height_pc import DisjointSet
+from MinimumSpanningTree.int_set import IntSet
+from MinimumSpanningTree.union_by_height_pc import DisjointSet
 
 Edge = namedtuple("Edge", "first_vertex second_vertex weight")
 SpecialEdge = namedtuple("SpecialEdge", "first_vertex second_vertex weight is_flipped_vertices")
@@ -117,9 +117,9 @@ class Graph:
         if len(self.mst_edges) == self.number_of_edges:  # no second-smallest MST
             return self.second_smallest_mst_edges, -1
 
-        self.edges = Graph.sort_edges_by_vertex(self.edges)
-        self.mst_edges = Graph.sort_edges_by_vertex(self.mst_edges)
-        self.edges_not_in_mst = Graph.sort_edges_by_vertex(self.edges_not_in_mst)
+        # only necessary to make output consistent
+        # self.mst_edges = Graph.sort_edges_by_vertex(self.mst_edges)
+        # self.edges_not_in_mst = Graph.sort_edges_by_vertex(self.edges_not_in_mst)
 
         adjacent_vertices_table = Graph._get_adjacent_vertices_lookup_table(self.mst_edges, self.number_of_vertices)
 

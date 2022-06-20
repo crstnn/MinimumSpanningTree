@@ -117,10 +117,6 @@ class Graph:
         if len(self.mst_edges) == self.number_of_edges:  # no second-smallest MST
             return self.second_smallest_mst_edges, -1
 
-        # only necessary to make output consistent
-        # self.mst_edges = Graph.sort_edges_by_vertex(self.mst_edges)
-        # self.edges_not_in_mst = Graph.sort_edges_by_vertex(self.edges_not_in_mst)
-
         adjacent_vertices_table = Graph._get_adjacent_vertices_lookup_table(self.mst_edges, self.number_of_vertices)
 
         visited_vert_set = IntSet(self.number_of_vertices + 1)
@@ -166,6 +162,8 @@ class Graph:
         self.second_smallest_mst_edges = self.mst_edges[:]
         self.second_smallest_mst_edges.remove(conv_to_normal_edge(best_replacement_pair[0]))
         self.second_smallest_mst_edges.append(best_replacement_pair[1])
+
+        # only necessary to make output ordered
         self.second_smallest_mst_edges = Graph.sort_edges_by_vertex(self.second_smallest_mst_edges)
 
         self.second_smallest_mst_weight = \

@@ -5,7 +5,7 @@ from MinimumSpanningTree.int_set import IntSet
 from MinimumSpanningTree.union_by_height_pc import DisjointSet
 
 Edge = namedtuple("Edge", "first_vertex second_vertex weight")
-SpecialEdge = namedtuple("SpecialEdge", "first_vertex second_vertex weight is_flipped_vertices")
+TableEdge = namedtuple("TableEdge", "first_vertex second_vertex weight is_flipped_vertices")
 VertexInformation = namedtuple("VertexInformation", "vertex_id parent_vertex_id parent_edge depth")
 GraphInformation = namedtuple("GraphInformation", "number_of_vertices number_of_edges")
 
@@ -94,13 +94,13 @@ class Graph:
                 current_u = u_info.parent_vertex_id
 
     @staticmethod
-    def _get_adjacent_vertices_lookup_table(edges: list[Edge], number_of_vertices) -> tuple[list[SpecialEdge], ...]:
+    def _get_adjacent_vertices_lookup_table(edges: list[Edge], number_of_vertices) -> tuple[list[TableEdge], ...]:
 
-        lookup_table: tuple[list[SpecialEdge], ...] = tuple([] for _ in range(number_of_vertices + 1))
+        lookup_table: tuple[list[TableEdge], ...] = tuple([] for _ in range(number_of_vertices + 1))
 
         for (first_vert, second_vert, weight) in edges:
-            lookup_table[second_vert].append(SpecialEdge(second_vert, first_vert, weight, True))
-            lookup_table[first_vert].append(SpecialEdge(first_vert, second_vert, weight, False))
+            lookup_table[second_vert].append(TableEdge(second_vert, first_vert, weight, True))
+            lookup_table[first_vert].append(TableEdge(first_vert, second_vert, weight, False))
 
         return lookup_table
 

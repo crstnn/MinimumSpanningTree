@@ -7,7 +7,7 @@ class IntSet:
         return self.is_present[value]
 
     def __iter__(self):
-        return filter(lambda x: x is True, self.is_present)
+        return iter(idx for idx, val in enumerate(self.is_present) if val is not False)
 
     def add(self, value: int) -> None:
         self.is_present[value] = True

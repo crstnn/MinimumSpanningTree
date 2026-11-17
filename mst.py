@@ -1,8 +1,8 @@
 #!/usr/bin/python3.10
 import math
 from collections import namedtuple
-from MinimumSpanningTree.int_set import IntSet
-from MinimumSpanningTree.union_by_height_pc import DisjointSet
+from int_set import IntSet
+from union_by_height_pc import DisjointSet
 
 Edge = namedtuple("Edge", "first_vertex second_vertex weight")
 TableEdge = namedtuple("TableEdge", "first_vertex second_vertex weight is_flipped_vertices")
@@ -125,8 +125,8 @@ class Graph:
         currently_processing = [1]
         vertex_infos = [None, VertexInformation(1, None, None, 0)] + ([None] * (self.number_of_vertices - 1))
 
+        # DFS; depth is visit order, enough for the LCA walk
         depth = 0
-        # BFS of MST from root to leaves
         while currently_processing:
             depth += 1
             curr_vert = currently_processing.pop()

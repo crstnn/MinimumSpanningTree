@@ -1,6 +1,6 @@
 #!/usr/bin/python3.10
 import sys
-from MinimumSpanningTree.mst import Graph, Edge, GraphInformation
+from mst import Graph, Edge, GraphInformation
 
 
 def main() -> None:
